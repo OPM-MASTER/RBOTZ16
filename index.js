@@ -2746,16 +2746,10 @@ ${setting.linkgrub3}
             "http://chat.whatsapp.com/",
           ];
           const regEx = new RegExp(tt.join("|"), "gi");
-
-          /*      if (body.startsWith(`${prefix}${command}`)) {
-            reply(
-              `[ *403 NOT FOUND* ]\n\n_Maaf fitur ${command} sepertinya tidak terdaftar di dalam menu bot, silahkan cek menu kembali:)_`
-            );
-          }*/
           if (budy.match(regEx)) {
             if (!isGroup) return;
             if (!isAntiLink) return;
-            if (!isGroupAdmins)
+            if (isGroupAdmins)
               return reply(`Your is Admin!! Bot not Found kick You :D`);
             var Kick = `${sender.split("@")[0]}@s.whatsapp.net`;
             setTimeout(() => {
