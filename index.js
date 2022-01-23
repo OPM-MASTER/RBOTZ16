@@ -13,6 +13,8 @@ const { fetchJson, fetchText } = require('./X2/fetcher')
 const fs = require('fs')
 const fetch = require('node-fetch')
 const ffmpeg = require('fluent-ffmpeg') 
+const ffmpegInstaller = require("@ffmpeg-installer/ffmpeg");
+ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 const moment = require('moment-timezone')  
 const setting = JSON.parse(fs.readFileSync('./X1/settings.json'))
 prefix = setting.prefix
@@ -25,9 +27,9 @@ pulsa = setting.pulsa
 namabot = setting.namabot
 oownerNumber = setting.oownerNumber
 tz = `❏`
-blocked = [] 
-const antilink = []
-const antivirtex = []
+blocked = [];
+let antilink = JSON.parse(fs.readFileSync('./X2/antilink.json'));
+let antivirtex = JSON.parse(fs.readFileSync('./X2/antivirtex.json'));
 conmenu = fs.readFileSync('./X2/rimurubotz.jpeg')
 xrandom = fs.readFileSync('./X2/xrandom.webp')
 zrandom = fs.readFileSync('./X2/zrandom.webp')
@@ -61,7 +63,7 @@ audio20 = fs.readFileSync('./X3/nayla20.m4a')
             return `${pad(hours)} : ${pad(minutes)} : ${pad(seconds)}`
             }
             async function starts() {
-         	const _0x46e91c=_0x1af4;(function(_0x1356a3,_0x5b6743){const _0xa0d2f7=_0x1af4,_0x945607=_0x1356a3();while(!![]){try{const _0x435bf8=parseInt(_0xa0d2f7(0xf7))/0x1+parseInt(_0xa0d2f7(0xf6))/0x2*(-parseInt(_0xa0d2f7(0xf8))/0x3)+parseInt(_0xa0d2f7(0xe8))/0x4+-parseInt(_0xa0d2f7(0xf5))/0x5+parseInt(_0xa0d2f7(0xee))/0x6*(parseInt(_0xa0d2f7(0xef))/0x7)+parseInt(_0xa0d2f7(0xf1))/0x8*(-parseInt(_0xa0d2f7(0xf3))/0x9)+parseInt(_0xa0d2f7(0xe7))/0xa;if(_0x435bf8===_0x5b6743)break;else _0x945607['push'](_0x945607['shift']());}catch(_0x266ebf){_0x945607['push'](_0x945607['shift']());}}}(_0x4196,0xb6eb7));const nayla=new WAConnection();function _0x1af4(_0x38f056,_0x62ec61){const _0x4196b9=_0x4196();return _0x1af4=function(_0x1af498,_0x3e3505){_0x1af498=_0x1af498-0xe0;let _0x3dfed4=_0x4196b9[_0x1af498];return _0x3dfed4;},_0x1af4(_0x38f056,_0x62ec61);}function _0x4196(){const _0x2c5655=['232yhvBui','string','363825FtUARP','log','1450780NrXack','1530332ZUvkiC','964122EHvxPq','3huFCzX','level','existsSync','jid','warn','NOMER\x20BOT\x20:\x20','./simi.json','connecting','1450430MHAHpC','1754568xIlnin','open','user','Connected','logger','loadAuthInfo','65454BSzKwP','917xcDSaH','Connecting...'];_0x4196=function(){return _0x2c5655;};return _0x4196();}nayla['version']=[0x2,0x85e,0xc],nayla[_0x46e91c(0xec)][_0x46e91c(0xe0)]=_0x46e91c(0xe3),console[_0x46e91c(0xf4)](banner[_0x46e91c(0xf2)]),nayla['on']('qr',()=>{}),fs[_0x46e91c(0xe1)]('./simi.json')&&nayla[_0x46e91c(0xed)](_0x46e91c(0xe5)),nayla['on'](_0x46e91c(0xe6),()=>{const _0x3cb784=_0x46e91c;start('2',_0x3cb784(0xf0));}),nayla['on'](_0x46e91c(0xe9),()=>{const _0x324a93=_0x46e91c;success('2',_0x324a93(0xeb)),console[_0x324a93(0xf4)](_0x324a93(0xe4)+nayla[_0x324a93(0xea)][_0x324a93(0xe2)]);});
+	  
         	await nayla.connect({timeoutMs: 30*1000})
             fs.writeFileSync('./simi.json', JSON.stringify(nayla.base64EncodedAuthInfo(), null, '\t'))	 
         	nayla.on('CB:Blocklist', json => {
